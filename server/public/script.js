@@ -55,28 +55,28 @@ let numbers;
 
 function add(numbers){
     for (let number of numbers){
-        result = Number(number.firstValue) + Number(number.secondValue)
+        result = number.firstValue*1 + number.secondValue*1
         renderToDom('+');
     }
 }
 
 function subtract(numbers){
     for (let number of numbers){
-        result = Number(number.firstValue) - Number(number.secondValue)
+        result = number.firstValue - number.secondValue
         renderToDom('-');
     }
 }
 
 function multiply(numbers){
     for (let number of numbers){
-        result = Number(number.firstValue) * Number(number.secondValue)
+        result = number.firstValue * number.secondValue
         renderToDom('*');
     }
 }
 
 function divide(numbers){
     for (let number of numbers){
-        result = Number(number.firstValue) / Number(number.secondValue)
+        result = number.firstValue / number.secondValue
         renderToDom('/');
     }
 }
