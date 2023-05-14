@@ -96,37 +96,21 @@ function getAnswer(){
 
 function add(event){
     event.preventDefault();
-    // for (let number of numbers){
-    //     result = number.firstValue*1 + number.secondValue*1
-    //     renderToDom('+');
-    // }
     operator = '+'
 }
 
 function subtract(event){
     event.preventDefault();
-    // for (let number of numbers){
-    //     result = number.firstValue - number.secondValue
-    //     renderToDom('-');
-    // }
     operator = '-'
 }
 
 function multiply(event){
     event.preventDefault();
-    // for (let number of numbers){
-    //     result = number.firstValue * number.secondValue
-    //     renderToDom('*');
-    // }
     operator = '*'
 }
 
 function divide(event){
     event.preventDefault();
-    // for (let number of numbers){
-    //     result = number.firstValue / number.secondValue
-    //     renderToDom('/');
-    // }
     operator = '/'
 }
 
