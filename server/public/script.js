@@ -30,8 +30,10 @@ function addNumbers(event){
 
     $.ajax({
         method: 'POST',
-        url: '/numbers',
-        data: {userInputs}
+        url: '/userInputs',
+        data: {
+            userInputs
+        }
     }).then(function(response){
         console.log('posted numbers')
         getAnswer(response);
@@ -88,9 +90,9 @@ function getAnswer(){
     $.ajax({
         method: 'GET',
         url: '/answer'
-    }).then(function(answer){
+    }).then(function(response){
         console.log('getting answer was a success')
-        renderToDom(answer);
+        renderToDom();
     }).catch(function(error){
         alert('Error, I\'m a teapot trying to get an answer')
         console.log('request failed to get answer', error)

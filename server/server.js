@@ -7,15 +7,15 @@ const port = 5000;
 
 const bodyParser = require('body-parser');
 
-let numbers = [];
+const userInputs = require('./modules/userInputs');
 
 app.use(express.static('server/public'));
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.post('/numbers', function(req, res){
-    numbers.push(req.body);
-    console.log(numbers)
+app.post('/userInputs', function(req, res){
+    userInputs.push(req.body);
+    console.log(userInputs)
     res.sendStatus(201);
 })
 
@@ -27,7 +27,7 @@ app.post('/numbers', function(req, res){
 let answer;
 
 app.get('/answer', function(req, res){
-    answer = Function("return " + numbers.userInputs)();
+    answer = Function("return " + userInputs.userInputs)();
     console.log('answer is', answer)
     res.send(answer);
 })
