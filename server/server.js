@@ -23,7 +23,11 @@ app.post('/numbers', function(req, res){
 //     res.send(numbers);
 // })
 
+let answer;
+
 app.get('/answer', function(req, res){
+    answer = Function("return " + numbers.userInputs)();
+    console.log('answer is', answer)
     res.send(answer);
 })
 
@@ -33,21 +37,21 @@ app.listen(port, () => {
     console.log('listening on port', port);
 })
 
-let answer = doTheMath(numbers);
+// let answer = doTheMath(numbers);
 
-function doTheMath(){
-    for (let number of numbers){
-        if (number.operators === '+'){
-            answer = number.firstValue*1 + number.secondValue*1
-        }
-        else if (number.operators === '-'){
-            answer = number.firstValue - number.secondValue
-        }
-        else if (number.operators === '*'){
-            answer = number.firstValue * number.secondValue
-        }
-        else if (number.operators === '/'){
-            answer = number.firstValue / number.secondValue
-        }
-    }
-}
+// function doTheMath(){
+//     for (let number of numbers){
+//         if (number.operators === '+'){
+//             answer = number.firstValue*1 + number.secondValue*1
+//         }
+//         else if (number.operators === '-'){
+//             answer = number.firstValue - number.secondValue
+//         }
+//         else if (number.operators === '*'){
+//             answer = number.firstValue * number.secondValue
+//         }
+//         else if (number.operators === '/'){
+//             answer = number.firstValue / number.secondValue
+//         }
+//     }
+// }

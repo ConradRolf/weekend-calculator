@@ -13,6 +13,8 @@ function onReady() {
 
 let operator;
 let numbersFunction;
+let userInputs;
+let answer;
 
 function addNumbers(event){
     event.preventDefault();
@@ -21,16 +23,17 @@ function addNumbers(event){
     const secondValue = $('#second-value').val();
     const operators = operator
     numbersFunction = (`<p> ${firstValue} ${operators} ${secondValue} </p>`)
+    userInputs = firstValue + operators + secondValue
+    answer = Function("return " + userInputs)();
+    console.log(answer)
+    console.log(userInputs);
 
     $.ajax({
         method: 'POST',
         url: '/numbers',
-        data: {
-            firstValue,
-            secondValue,
-            operators
-        }
+        data: userInputs
     }).then(function(response){
+        console.log('posted numbers')
         getAnswer(response);
     }).catch(function(error){
         alert('Error, I\'m a teapot trying to post numbers!');
@@ -86,7 +89,7 @@ function getAnswer(){
         method: 'GET',
         url: '/answer'
     }).then(function(answer){
-        console.log('success', answer)
+        console.log('getting answer was a success')
         renderToDom(answer);
     }).catch(function(error){
         alert('Error, I\'m a teapot trying to get an answer')
@@ -115,9 +118,8 @@ function divide(event){
 }
 
 
-function renderToDom(answer){
-    let result = answer
-    $('#result-list').append(numbersFunction, result)
+function renderToDom(){
+    $('#result-list').append(numbersFunction, answer)
 }
 
 // function doTheMath(numbers){
