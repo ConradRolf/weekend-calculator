@@ -7,7 +7,7 @@ const port = 5000;
 
 const bodyParser = require('body-parser');
 
-const userInputs = require('./modules/userInputs');
+let userInputs = [];
 
 app.use(express.static('server/public'));
 
