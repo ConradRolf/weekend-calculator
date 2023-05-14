@@ -31,7 +31,7 @@ function addNumbers(event){
     $.ajax({
         method: 'POST',
         url: '/numbers',
-        data: userInputs
+        data: {userInputs}
     }).then(function(response){
         console.log('posted numbers')
         getAnswer(response);

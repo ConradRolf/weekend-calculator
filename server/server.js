@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.post('/numbers', function(req, res){
     numbers.push(req.body);
+    console.log(numbers)
     res.sendStatus(201);
 })
 
