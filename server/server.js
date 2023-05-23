@@ -1,4 +1,3 @@
-
 const express = require('express');
 
 const app = express();
@@ -13,46 +12,28 @@ app.use(express.static('server/public'));
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.post('/userInputs', function(req, res){
-    userInputs.push(req.body);
-    console.log(userInputs)
+app.post('/postInputs', function(req, res){
+        let answer;
+            if (req.body.operators === '+'){
+                answer = req.body.firstValue*1 + req.body.secondValue*1
+            }
+            else if (req.body.operators === '-'){
+                answer = req.body.firstValue - req.body.secondValue
+            }
+            else if (req.body.operators === '*'){
+                answer = req.body.firstValue * req.body.secondValue
+            }
+            else if (req.body.operators === '/'){
+                answer = req.body.firstValue / req.body.secondValue
+            }
+        userInputs.push(`<p>${req.body.firstValue} ${req.body.operators} ${req.body.secondValue} = ${answer}`)
     res.sendStatus(201);
-})
-
-// app.get('/numbers', function(req, res) {
-//     console.log('Request for numbersOperator was made');
-//     res.send(numbers);
-// })
-
-let answer;
+}).then 
 
 app.get('/answer', function(req, res){
-    answer = Function("return " + userInputs.userInputs)();
-    console.log('answer is', answer)
-    res.send(answer);
+    res.send(userInputs);
 })
-
-// req.body.*value*, allows you to target parts of the req.body
 
 app.listen(port, () => {
     console.log('listening on port', port);
 })
-
-// let answer = doTheMath(numbers);
-
-// function doTheMath(){
-//     for (let number of numbers){
-//         if (number.operators === '+'){
-//             answer = number.firstValue*1 + number.secondValue*1
-//         }
-//         else if (number.operators === '-'){
-//             answer = number.firstValue - number.secondValue
-//         }
-//         else if (number.operators === '*'){
-//             answer = number.firstValue * number.secondValue
-//         }
-//         else if (number.operators === '/'){
-//             answer = number.firstValue / number.secondValue
-//         }
-//     }
-// }
